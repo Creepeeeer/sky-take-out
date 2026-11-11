@@ -158,4 +158,13 @@ public class OrderServiceImpl implements OrderService {
         String jsonString = JSONObject.toJSONString(map);
         webSocketServer.sendToAllClient(jsonString);
     }
+
+    @Override
+    public void reminder(Long id) {
+        Map map =new HashMap();
+        map.put("type",2);//2 表示客户催单
+        map.put("orderId",id);
+        String jsonString = JSONObject.toJSONString(map);
+        webSocketServer.sendToAllClient(jsonString);
+    }
 }
